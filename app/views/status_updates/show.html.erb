@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @status_update.user_id %>
+</p>
+
+<p>
+  <strong>Done:</strong>
+  <%= @status_update.done %>
+</p>
+
+<p>
+  <strong>Doing:</strong>
+  <%= @status_update.doing %>
+</p>
+
+<p>
+  <strong>Blockers:</strong>
+  <%= @status_update.blockers %>
+</p>
+
+<%= link_to 'Edit', edit_status_update_path(@status_update) %> |
+<%= link_to 'Back', status_updates_path %>
