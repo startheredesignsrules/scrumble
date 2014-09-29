@@ -1,10 +1,10 @@
 Scrumble::Application.routes.draw do
   get "welcome/index"
+  get "users" => "users#index"
+  get "status_updates" => "status_updates#index"
 
   resources :comments
-
   resources :status_updates
-
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
