@@ -1,2 +1,23 @@
-<h1>I MADE IT WORK RAAAHHHHHHHH!</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div id="sign-in-page">
+  <div class="row">
+
+    <%= form_tag({ :controller => :users, :action => :create }, { :method => :post, :id => '', :class => 'col-md-4 col-md-offset-4' }) do %>
+
+      <h3>Sign In</h3>
+      <br />
+
+      <div class="form-group">
+        <%= label_tag :name, "First Name:" %><br />
+        <%= text_field_tag :name, "", :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :email, "Email:" %><br />
+        <%= text_field_tag :email, "", :class => "form-control" %>
+      </div>
+
+      <%= submit_tag "Sign In", :class => "btn btn-default" %>
+    <% end %>
+
+  </div><!-- /.row -->
+</div><!-- /#sign-in-page -->

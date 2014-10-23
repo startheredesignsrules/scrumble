@@ -1,17 +1,21 @@
 Scrumble::Application.routes.draw do
+  resources :comments
+  resources :status_updates
+  resources :users
+
+  root 'welcome#index'
+
   get "welcome/index"
   get "users" => "users#index"
   get "status_updates" => "status_updates#index"
 
-  resources :comments
-  resources :status_updates
-  resources :users
+  post "new_user" => "users#create"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  #root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

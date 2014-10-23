@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree
+
+//= require frameworks/bootstrap
+
+//= require global
+//= require profile
+//= require scrum
