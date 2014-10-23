@@ -5,11 +5,15 @@ Scrumble::Application.routes.draw do
 
   root 'welcome#index'
 
-  get "welcome/index"
+  get '/home' => 'status_updates#index'
   get "users" => "users#index"
   get "status_updates" => "status_updates#index"
+  #post "new_user" => "users#create"
 
-  post "new_user" => "users#create"
+  post '/sessions' => 'sessions#create'
+  get '/signin' => 'sessions#new'
+  get '/signout' => 'sessions#destroy'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

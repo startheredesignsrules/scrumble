@@ -1,24 +1,41 @@
-<p id="notice"><%= notice %></p>
+<!-- status_updates/show.html.erb -->
 
-<p>
-  <strong>User:</strong>
-  <%= @status_update.user_id %>
-</p>
+<div id="status-update-page">
+  <h1 class="text-center">Status Update for <%= @current_user_name %></h1>
 
-<p>
-  <strong>Done:</strong>
-  <%= @status_update.done %>
-</p>
+  <p>
+    <strong>User:</strong>
+    <%= @status_update.user_id %>
+  </p>
 
-<p>
-  <strong>Doing:</strong>
-  <%= @status_update.doing %>
-</p>
+  <p>
+    <strong>Done:</strong>
+    <%= @status_update.done %>
+  </p>
 
-<p>
-  <strong>Blockers:</strong>
-  <%= @status_update.blockers %>
-</p>
+  <p>
+    <strong>Doing:</strong>
+    <%= @status_update.doing %>
+  </p>
 
-<%= link_to 'Edit', edit_status_update_path(@status_update) %> |
-<%= link_to 'Back', status_updates_path %>
+  <p>
+    <strong>Blockers:</strong>
+    <%= @status_update.blockers %>
+  </p>
+
+  <br />
+
+  <p><%= link_to 'Edit', edit_status_update_path(@status_update) %><br />
+  <%= link_to 'Back', status_updates_path %></p>
+
+  <hr />
+
+  <% @current_comments. each do |comment| %>
+    <p><%= comment.status_update_id %></p>
+    <p><%= comment.user_id %></p>
+    <p><%= comment.note %></p>
+    <p><%= link_to 'Show', comment %></p>
+    <p><%= link_to 'Edit', edit_comment_path(comment) %></p>
+    <p><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <% end %>
+</div>

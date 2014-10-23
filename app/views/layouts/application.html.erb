@@ -16,6 +16,10 @@
 
   <div id="main-content">
     <div class="container-fluid">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %> 
+      
       <%= yield %>
     </div>
   </div>

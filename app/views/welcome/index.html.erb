@@ -1,7 +1,26 @@
 <div id="sign-in-page">
   <div class="row">
 
-    <%= form_tag({ :controller => :users, :action => :create }, { :method => :post, :id => '', :class => 'col-md-4 col-md-offset-4' }) do %>
+    <%= form_tag({ :controller => :users, :action => :create }, { :method => :post, :id => 'sign-up-form', :class => 'col-md-4 col-md-offset-2' }) do %>
+
+      <h3>Sign Up</h3>
+      <br />
+
+      <div class="form-group">
+        <%= label_tag :name, "First Name:" %><br />
+        <%= text_field_tag :name, "", :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :email, "Email:" %><br />
+        <%= text_field_tag :email, "", :class => "form-control" %>
+      </div>
+
+      <%= submit_tag "Sign Up", :class => "btn btn-default" %>
+    <% end %>
+
+    <!-- SIGN IN
+    <%= form_tag({ :controller => :sessions, :action => :create }, { :method => :post, :id => 'sign-in-form', :class => 'col-md-4' }) do %>
 
       <h3>Sign In</h3>
       <br />
@@ -18,6 +37,7 @@
 
       <%= submit_tag "Sign In", :class => "btn btn-default" %>
     <% end %>
+     -->
 
   </div><!-- /.row -->
 </div><!-- /#sign-in-page -->

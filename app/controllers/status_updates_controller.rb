@@ -5,11 +5,20 @@ class StatusUpdatesController < ApplicationController
   # GET /status_updates.json
   def index
     @status_updates = StatusUpdate.all
+    @status_update = StatusUpdate.new
   end
 
   # GET /status_updates/1
   # GET /status_updates/1.json
   def show
+    @comments = Comment.all
+    @current_comments = @comments.select {|comment| comment.status_update_id == @status_update.user_id}
+    @users = User.all
+    #author_id = @status_update.user_id # 21
+    #puts "Author id: #{author_id}"
+    #current_user = User.find_by_id(author_id)
+    #puts "Current User Name: #{current_user}"
+    @current_user_name = (@users.select {|user| user.id == @status_update.user_id}).map {|userhash| userhash['name']}.join
   end
 
   # GET /status_updates/new
@@ -26,14 +35,10 @@ class StatusUpdatesController < ApplicationController
   def create
     @status_update = StatusUpdate.new(status_update_params)
 
-    respond_to do |format|
-      if @status_update.save
-        format.html { redirect_to @status_update, notice: 'Status update was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @status_update }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @status_update.errors, status: :unprocessable_entity }
-      end
+    if @status_update.save
+      redirect_to '/home', notice: "You've added your scrum for the day."
+    else
+      redirect_to 'new', notice: "Something didn't work right."
     end
   end
 

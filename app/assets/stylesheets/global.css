@@ -1,3 +1,30 @@
 /* GLOBAL STYLES */
 
 body { background-color: #EEE; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.margin-auto { margin-left: auto; margin-right: auto; }
+
+.flash {
+  border: 1px solid #CCC;
+  padding: 20px;
+}
+
+.flash.success, 
+.flash.notice {
+  border-color: green;
+  color: green;
+}
+
+.flash.error {
+  border-color: red;
+  color: red;
+}
+
+/* Bootstrap Overrides */
+.well {
+  background-color: white;
+  background-image: none;
+}

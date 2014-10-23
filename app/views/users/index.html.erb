@@ -1,8 +1,9 @@
 <h1>Team Members</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Email</th>
       <th>Avatar url</th>
       <th>Name</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.avatar_url %></td>
         <td><%= user.name %></td>

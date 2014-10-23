@@ -1,50 +1,35 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
   def index
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
-  def edit
-  end
-
-  # POST /users
-  # POST /users.json
   def create
-    redirect_to_back and return if params[:name].blank?
-    redirect_to_back and return if params[:email].blank?
-    redirect_to_back and return if User.find_by_email(params[:email])
+    if (params[:name].blank? || params[:email].blank?)
+      # If any field is blank, say so.
+      redirect_to_back
+      flash[:error] = "Those fields can't be blank, dude."
 
-    @user = User.create(:name => params[:name], :email => params[:email])
-    redirect_to @user
-=begin
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    elsif User.find_by_email(params[:email])
+      # If user exists, redirect to user (log in)
+      redirect_to @user
+      flash[:success] = "Good to see you again!"
     end
-=end
+
+    # If user doesn't exist, create user and redirect them to the home page
+    @user = User.create(:name => params[:name], :email => params[:email])
+    redirect_to "/home"
+    flash[:success] = "Welcome. Now you can start using scrumble."
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -57,8 +42,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|
