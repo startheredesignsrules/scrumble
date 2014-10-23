@@ -11,9 +11,3 @@
  *= require_self
  *= require_tree .
  */
-
-@import 'frameworks/bootstrap';
-
-@import 'global';
-@import 'profile';
-@import 'scrum';
