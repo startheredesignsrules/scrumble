@@ -12,7 +12,7 @@ class StatusUpdatesController < ApplicationController
   # GET /status_updates/1.json
   def show
     @comments = Comment.all
-    @current_comments = @comments.select {|comment| comment.status_update_id == @status_update.user_id}
+    @current_comments = @comments.select {|comment| comment.status_update_id == @status_update.id}
     @users = User.all
     #author_id = @status_update.user_id # 21
     #puts "Author id: #{author_id}"

@@ -1,41 +1,37 @@
 <!-- status_updates/show.html.erb -->
 
-<div id="status-update-page">
-  <h1 class="text-center">Status Update for <%= @current_user_name %></h1>
+<div id="status-update-page" class="row">
+  <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+    <div class="well">
 
-  <p>
-    <strong>User:</strong>
-    <%= @status_update.user_id %>
-  </p>
+      <h1 class="text-center">Status Update for <%= @current_user_name %></h1>
+      <h3 class="text-center muted">on <%= @status_update.created_at %></h3>
+      <hr />
 
-  <p>
-    <strong>Done:</strong>
-    <%= @status_update.done %>
-  </p>
+      <h4>Done</h4>
+      <p class="lead muted"><%= @status_update.done %></p>
 
-  <p>
-    <strong>Doing:</strong>
-    <%= @status_update.doing %>
-  </p>
+      <h4>Doing</h4>
+      <p class="lead muted"><%= @status_update.doing %></p>
 
-  <p>
-    <strong>Blockers:</strong>
-    <%= @status_update.blockers %>
-  </p>
+      <h4>Blocked By</h4>
+      <p class="lead muted"><%= @status_update.blockers %></p>
 
-  <br />
+      <hr />
 
-  <p><%= link_to 'Edit', edit_status_update_path(@status_update) %><br />
-  <%= link_to 'Back', status_updates_path %></p>
+      <p><%= link_to 'Edit', edit_status_update_path(@status_update) %><br />
+      <%= link_to 'Delete', @status_update, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
-  <hr />
+      <% @current_comments. each do |comment| %>
+        <!--
+        <p><%= comment.status_update_id %></p>
+        -->
+        <hr />
+        <h4>User id #<%= comment.user_id %> said:</h4>
+        <p>"<%= comment.note %>"</p>
+        <p><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <% end %>
 
-  <% @current_comments. each do |comment| %>
-    <p><%= comment.status_update_id %></p>
-    <p><%= comment.user_id %></p>
-    <p><%= comment.note %></p>
-    <p><%= link_to 'Show', comment %></p>
-    <p><%= link_to 'Edit', edit_comment_path(comment) %></p>
-    <p><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-  <% end %>
+    </div>
+  </div>
 </div>
