@@ -4,9 +4,7 @@ class StatusUpdatesController < ApplicationController
   def index
     @status_updates = StatusUpdate.all
     @status_update = StatusUpdate.new
-
     @comments = Comment.all
-    @current_comments = @comments.select {|comment| comment.status_update_id == @status_update.id}
   end
 
   def show

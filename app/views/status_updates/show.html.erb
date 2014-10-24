@@ -22,6 +22,10 @@
       <p><%= link_to 'Edit', edit_status_update_path(@status_update) %><br />
       <%= link_to 'Delete', @status_update, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
+      <hr />
+
+      <h3><%= @current_comments.length %> Comments</h3>
+
       <% @current_comments. each do |comment| %>
         <!--
         <p><%= comment.status_update_id %></p>

@@ -25,12 +25,20 @@
           <p><%= status_update.doing %></p>
           <h5>Blockers</h5>
           <p><%= status_update.blockers %></p>
+
+          <br />
+
+          <p class="muted"><small>You can <%= link_to 'edit', edit_status_update_path(status_update) %> or 
+          <%= link_to 'delete', status_update, method: :delete, data: { confirm: 'Are you sure?' } %> this status.</small></p>
+
           <hr />
-          <p><%= link_to 'Edit', edit_status_update_path(status_update) %><br />
-          <%= link_to 'Delete', status_update, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-          <hr />
-          <p>Current comments: <%= @current_comments.length %> (not working)<br />
-          <%= link_to '## Comments', status_update %></p>
+
+          <% total_comments = @comments.select {|comment| comment.status_update_id == status_update.id} %>
+          <p><strong>
+            <%= link_to status_update do %>
+              <%= total_comments.length %> Comments &raquo;
+            <% end %>
+          </strong></p>
           <!--<p><%= link_to 'New Comment', new_comment_path %></p>-->
         </div>
       </div>
