@@ -1,37 +1,28 @@
 class StatusUpdatesController < ApplicationController
   before_action :set_status_update, only: [:show, :edit, :update, :destroy]
 
-  # GET /status_updates
-  # GET /status_updates.json
   def index
     @status_updates = StatusUpdate.all
     @status_update = StatusUpdate.new
+
+    @comments = Comment.all
+    @current_comments = @comments.select {|comment| comment.status_update_id == @status_update.id}
   end
 
-  # GET /status_updates/1
-  # GET /status_updates/1.json
   def show
     @comments = Comment.all
     @current_comments = @comments.select {|comment| comment.status_update_id == @status_update.id}
     @users = User.all
-    #author_id = @status_update.user_id # 21
-    #puts "Author id: #{author_id}"
-    #current_user = User.find_by_id(author_id)
-    #puts "Current User Name: #{current_user}"
     @current_user_name = (@users.select {|user| user.id == @status_update.user_id}).map {|userhash| userhash['name']}.join
   end
 
-  # GET /status_updates/new
   def new
     @status_update = StatusUpdate.new
   end
 
-  # GET /status_updates/1/edit
   def edit
   end
 
-  # POST /status_updates
-  # POST /status_updates.json
   def create
     @status_update = StatusUpdate.new(status_update_params)
 
@@ -42,8 +33,6 @@ class StatusUpdatesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /status_updates/1
-  # PATCH/PUT /status_updates/1.json
   def update
     respond_to do |format|
       if @status_update.update(status_update_params)
@@ -56,8 +45,6 @@ class StatusUpdatesController < ApplicationController
     end
   end
 
-  # DELETE /status_updates/1
-  # DELETE /status_updates/1.json
   def destroy
     @status_update.destroy
     respond_to do |format|

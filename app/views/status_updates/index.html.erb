@@ -29,7 +29,8 @@
           <p><%= link_to 'Edit', edit_status_update_path(status_update) %><br />
           <%= link_to 'Delete', status_update, method: :delete, data: { confirm: 'Are you sure?' } %></p>
           <hr />
-          <p><%= link_to 'View Comments', status_update %></p>
+          <p>Current comments: <%= @current_comments.length %> (not working)<br />
+          <%= link_to '## Comments', status_update %></p>
           <!--<p><%= link_to 'New Comment', new_comment_path %></p>-->
         </div>
       </div>
