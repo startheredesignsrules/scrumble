@@ -1,6 +1,6 @@
 <!-- status_updates/index.html.erb -->
 <div id="scrum-page">
-  <h1 class="text-center">Scrum for TODAYS DATE</h1>
+  <h1 id="scrum-date" class="text-center"><%= @today.strftime("%A, %B %-d") %></h1>
   <br />
   <!--
   <p class="text-center"><%= link_to "Add Update", new_status_update_path, :class => "btn btn-default" %></p>
@@ -16,9 +16,11 @@
       </div>
 
     <% @status_updates.each do |status_update| %>
+      <% current_user_name = (@users.select {|user| user.id == status_update.user_id}).map {|userhash| userhash['name']}.join %>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="well">
-          <h3>Update from User #<%= status_update.user_id %></h3>
+          <h3><%= current_user_name %></h3>
+          <hr />
           <h5>Done</h5>
           <p><%= status_update.done %></p>
           <h5>Doing</h5>

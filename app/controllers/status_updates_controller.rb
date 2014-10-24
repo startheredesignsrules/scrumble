@@ -5,6 +5,8 @@ class StatusUpdatesController < ApplicationController
     @status_updates = StatusUpdate.all
     @status_update = StatusUpdate.new
     @comments = Comment.all
+    @users = User.all
+    @today = Time.new
   end
 
   def show

@@ -1,1 +1,7 @@
 /* SCRUM PAGE STYLES */
+
+#scrum-page #scrum-date {
+  color: #ff7a4f;
+  font-size: 48px;
+  text-transform: uppercase;
+}
