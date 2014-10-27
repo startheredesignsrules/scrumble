@@ -11,7 +11,7 @@
 
 <div id="wrapper">
   <nav id="header" class="navbar navbar-default" role="navigation">
-    <p class="navbar-text">SCRUMBLE</p>
+    <p class="navbar-text">SCRUMBLE<% if @user %> - Welcome, <%= @user.name %><% end %></p>
   </nav>
 
   <div id="main-content">

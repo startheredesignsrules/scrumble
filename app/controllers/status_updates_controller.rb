@@ -1,5 +1,6 @@
 class StatusUpdatesController < ApplicationController
   before_action :set_status_update, only: [:show, :edit, :update, :destroy]
+  before_filter :ensure_logged_in
 
   def index
     @status_updates = StatusUpdate.all
